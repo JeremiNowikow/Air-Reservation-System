@@ -53,3 +53,4 @@ f = Flight("BA324", boeing)
 g = Flight("BA324", airbus)
 
 pp(f.seats)
+["a", "b"].sort(-1)
