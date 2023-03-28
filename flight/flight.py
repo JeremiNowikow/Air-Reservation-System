@@ -1,5 +1,3 @@
-from pprint import pprint as pp
-
 class Flight:
     def __init__(self, flight_number, plane):
         self.flight_number = flight_number
@@ -54,44 +52,3 @@ class Flight:
         # return empty_seats
 
         return sum(sum(1 for passenger in row.values() if passenger is None) for row in self.seats if row is not None)
-
-
-
-
-class Airplane:
-    def num_seats(self):
-        rows, seats = self.get_seating_plan()
-        return len(rows) * len(seats)
-
-
-class Boeing737Max(Airplane):
-    @staticmethod
-    def get_model():
-        return "Boeing 737Max"
-
-    @staticmethod
-    def get_seating_plan():
-        return range(25), "ABCDEG"
-
-class AirbusA380(Airplane):
-    @staticmethod
-    def get_model():
-        return "Airbus A380"
-
-    @staticmethod
-    def get_seating_plan():
-        return range(45), "ABCDEGHJK"
-
-
-boeing = Boeing737Max()
-airbus = AirbusA380()
-f = Flight("BA324", boeing)
-g = Flight("BA324", airbus)
-
-
-f.allocate_passenger("1C", "Jarosław K")
-f.allocate_passenger("12E", "Paweł K")
-f.allocate_passenger("12A", "Lech K")
-pp(f.seats)
-print(f.plane.num_seats())
-print(f.get_num_empty_seats())
